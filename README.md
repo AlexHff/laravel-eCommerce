@@ -28,8 +28,6 @@ php artisan serve
 Go to [http://localhost:8000](http://localhost:8000) and voilà!
 
 ## References
-Laravel Documentation - https://laravel.com/docs/5.8/
-
-Laracasts - https://laracasts.com/series/laravel-from-scratch-2018/
-
-Stackoverflow - https://stackoverflow.com/
+- [Laravel Documentation](https://laravel.com/docs/5.8)
+- [Laracasts](https://laracasts.com/series/laravel-from-scratch-2018/)
+- [Stackoverflow](https://stackoverflow.com/)
