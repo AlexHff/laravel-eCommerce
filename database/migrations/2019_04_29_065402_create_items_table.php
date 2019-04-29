@@ -17,8 +17,10 @@ class CreateItemsTable extends Migration
             $table->bigIncrements('id');
             $table->timestamps();
             $table->string('name');
-            $table->text('description');
+            $table->string('description');
             $table->double('price');
+            $table->integer('units');
+            $table->string('image');
         });
     }
 

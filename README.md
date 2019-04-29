@@ -25,6 +25,11 @@ Clone this repo and change to the directory. Then run:
 php artisan serve
 ```
 
+And
+``` bash
+php artisan migrate --seed
+```
+
 Go to [http://localhost:8000](http://localhost:8000) and voilà!
 
 ## References
