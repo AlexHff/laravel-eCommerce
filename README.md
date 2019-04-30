@@ -1,5 +1,5 @@
 # ece-piscine
-A CS project written in HTML5, CSS, javascript and PHP using Laravel Framework.
+An eCommerce Web Platform written in HTML5, CSS, javascript and PHP using Laravel Framework.
 
 ## Installation
 To quickly install Composer in the current directory, run the following script in your terminal.
@@ -19,8 +19,10 @@ Now, download the Laravel installer using Composer:
 ``` bash
 composer global require laravel/installer
 ```
+Clone this repo and change to the directory.
 
-Clone this repo and change to the directory. Then run:
+##Usage
+Run:
 ``` bash
 php artisan serve
 ```
@@ -38,3 +40,5 @@ Go to [http://localhost:8000](http://localhost:8000) and voilà!
 - [Stackoverflow](https://stackoverflow.com/)
 - [Heroku Documentation](https://devcenter.heroku.com/)
 - [MySQL Workbench Manual](https://dev.mysql.com/doc/workbench/en/)
+- [Multiple Authentication in Laravel 5.5](https://hackernoon.com/laravel-multiple-authentication-80daa855322b)
+- [Spatie Laravel-Permission](https://github.com/spatie/laravel-permission)

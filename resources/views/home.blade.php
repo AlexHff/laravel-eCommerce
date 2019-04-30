@@ -16,6 +16,12 @@
                     @endif
 
                     You are logged in!
+
+                    @if (auth()->user()->isAdmin == 1)
+                        You are admin.
+                    @else
+                        You are normal user.
+                    @endif
                 </div>
             </div>
         </div>
