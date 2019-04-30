@@ -21,6 +21,7 @@ class CreateItemsTable extends Migration
             $table->double('price');
             $table->integer('units');
             $table->string('image');
+            $table->string('category');
         });
     }
 

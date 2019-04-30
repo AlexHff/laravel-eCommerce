@@ -15,17 +15,11 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('items', 'ItemController@index');
-Route::get('items/{item}', 'ItemController@show');
-
+/* These routes will redirect if and only if the user is logged in */
 Route::group(['middleware' => ['auth']], function () {
     Route::resource('users', 'UserController');
-    Route::get('items/create', 'ItemController@create');
-    Route::post('items', 'ItemController@store');
-    Route::get('items/{item}/edit', 'ItemController@edit');
-    Route::patch('items/{item}', 'ItemController@update');
-    Route::delete('items/{item}', 'ItemController@delete');
+    Route::resource('items', 'ItemController');
 });
 
 /* Redirect all other links to index page */
-Route::get('/{any}', 'PageController@index')->where('any', '.*');
+Route::get('/{any}', 'PageController@index')->where('any', '.*')->name('index');

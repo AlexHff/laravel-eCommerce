@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Item;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class ItemController extends Controller
 {
@@ -25,7 +26,7 @@ class ItemController extends Controller
      */
     public function create()
     {
-        //
+        return view('items/create');
     }
 
     /**
@@ -36,15 +37,28 @@ class ItemController extends Controller
      */
     public function store(Request $request)
     {
+        $validatedData = $request->validate([
+            'name' => 'required|max:191',
+            'description' => 'required|max:191',
+            'price' => 'required|regex:/^\d+(\.\d{1,2})?$/',
+            'units' => 'required|numeric|digits_between:0,1000000',
+            'image' => 'required|image|max:10000',
+            'category' => [
+                'required',
+                Rule::in(['Book', 'Music', 'Clothing', 'Sports & Outdoors']),
+            ]
+        ]);
+
         Item::create([
             'name' => $request->name,
             'description' => $request->description,
             'price' => $request->price,
             'units' => $request->units,
-            'image' => $request->image
+            'image' => $request->image,
+            'category' => $request->category
         ]);
 
-        return response();
+        return response()->json($item,200);
     }
 
     /**
@@ -78,8 +92,24 @@ class ItemController extends Controller
      */
     public function update(Request $request, Item $item)
     {
-        $item->update($request(['name', 'description', 'price', 'units', 'image']));
-        return response();
+        $validatedData = $request->validate([
+            'name' => 'required|max:191',
+            'description' => 'required|max:191',
+            'price' => 'required|regex:/^\d+(\.\d{1,2})?$/',
+            'units' => 'required|numeric|digits_between:0,1000000',
+            'image' => 'nullable|image|max:10000',
+            'category' => [
+                'required',
+                Rule::in(['Book', 'Music', 'Clothing', 'Sports & Outdoors']),
+            ]
+        ]);
+        if (is_null($request->image)) {
+            $item->update(request(['name', 'descriptions', 'price', 'units', 'category']));
+        }
+        else {
+            $item->update(request(['name', 'descriptions', 'price', 'units', 'image', 'category']));
+        }
+        return response()->json($item,200);
     }
 
     /**
