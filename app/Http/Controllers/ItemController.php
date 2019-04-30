@@ -14,7 +14,8 @@ class ItemController extends Controller
      */
     public function index()
     {
-        return response()->json(Item::all(),200);
+        $items = Item::all();
+        return view('items/index', compact('items'));
     }
 
     /**
@@ -65,7 +66,7 @@ class ItemController extends Controller
      */
     public function edit(Item $item)
     {
-        //
+        return view('items/edit', compact('item'));
     }
 
     /**

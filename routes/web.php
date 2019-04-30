@@ -11,8 +11,6 @@
 |
 */
 
-Route::get('/', 'PageController@index');
-
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
@@ -28,3 +26,6 @@ Route::group(['middleware' => ['auth']], function () {
     Route::patch('items/{item}', 'ItemController@update');
     Route::delete('items/{item}', 'ItemController@delete');
 });
+
+/* Redirect all other links to index page */
+Route::get('/{any}', 'PageController@index')->where('any', '.*');

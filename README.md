@@ -1,6 +1,6 @@
 # ece-piscine
 A CS project written in HTML5, CSS, javascript and PHP using Laravel Framework.
-test
+
 ## Installation
 To quickly install Composer in the current directory, run the following script in your terminal.
 ``` bash
