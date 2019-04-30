@@ -40,5 +40,4 @@ Go to [http://localhost:8000](http://localhost:8000) and voilà!
 - [Stackoverflow](https://stackoverflow.com/)
 - [Heroku Documentation](https://devcenter.heroku.com/)
 - [MySQL Workbench Manual](https://dev.mysql.com/doc/workbench/en/)
-- [Multiple Authentication in Laravel 5.5](https://hackernoon.com/laravel-multiple-authentication-80daa855322b)
 - [Spatie Laravel-Permission](https://github.com/spatie/laravel-permission)

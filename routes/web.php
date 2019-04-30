@@ -14,7 +14,6 @@
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('admin/routes', 'HomeController@admin')->middleware('admin');
 
 /* These routes will redirect if and only if the user is logged in */
 Route::group(['middleware' => ['auth']], function () {
