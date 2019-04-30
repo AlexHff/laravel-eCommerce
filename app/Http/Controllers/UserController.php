@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Item;
 use Illuminate\Http\Request;
+use App\User;
 
-class ItemController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,7 @@ class ItemController extends Controller
      */
     public function index()
     {
-        return response()->json(Item::all(),200);
+        return response()->json(User::all(),200);
     }
 
     /**
@@ -35,35 +35,27 @@ class ItemController extends Controller
      */
     public function store(Request $request)
     {
-        Item::create([
-            'name' => $request->name,
-            'description' => $request->description,
-            'price' => $request->price,
-            'units' => $request->units,
-            'image' => $request->image
-        ]);
-
-        return response();
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Item  $item
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Item $item)
+    public function show(User $user)
     {
-        return response()->json($item,200);
+        return response()->json($user,200);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Item  $item
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Item $item)
+    public function edit($id)
     {
         //
     }
@@ -72,24 +64,22 @@ class ItemController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Item  $item
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Item $item)
+    public function update(Request $request, $id)
     {
-        $item->update($request(['name', 'description', 'price', 'units', 'image']));
-        return response();
+        //
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Item  $item
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Item $item)
+    public function destroy($id)
     {
-        $item->delete();
-        return response();
+        //
     }
 }
