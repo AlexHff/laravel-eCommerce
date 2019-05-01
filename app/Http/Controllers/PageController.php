@@ -9,4 +9,8 @@ class PageController extends Controller
     public function index() {
         return view("index");
     }
+
+    public function categories() {
+        return view("categories");
+    }
 }

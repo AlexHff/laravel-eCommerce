@@ -13,6 +13,7 @@
 
 Auth::routes();
 
+Route::get('/categories', 'PageController@categories')->name('categories');
 Route::get('/home', 'HomeController@index')->name('home');
 
 /* These routes will redirect if and only if the user is logged in */

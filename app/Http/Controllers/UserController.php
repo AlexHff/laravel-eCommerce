@@ -10,6 +10,7 @@ use Hash;
 /**
  * User Authorization in Laravel 5.4 with Spatie Laravel-Permission
  * https://scotch.io/tutorials/user-authorization-in-laravel-54-with-spatie-laravel-permission
+ * Some parts of the following code are from the tutorial above
  */
 
 //Importing laravel-permission models
@@ -65,7 +66,7 @@ class UserController extends Controller
         $this->validate($request, [
             'name'=>'required|max:120',
             'email'=>'required|email|unique:users',
-            'password'=>'required|min:8|confirmed'
+            'password'=>'required|min:6|confirmed'
         ]);
 
         $user = User::create([
@@ -122,7 +123,7 @@ class UserController extends Controller
             $this->validate($request, [
                 'name'=>'required|max:120',
                 'email'=>'required|email|unique:users,email,'.$user->id,
-                'password'=>'required|min:8|confirmed'
+                'password'=>'required|min:6|confirmed'
             ]);
 
             $password = Hash::make($request->password);

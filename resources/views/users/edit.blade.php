@@ -27,12 +27,14 @@
                             <label for="description">Confirm password</label>
                             <input type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password_confirmation">
                         </div>
+                        @if (auth()->user()->hasRole('admin'))
                         <div class="form-check" style="margin-bottom:1em">
                             <input class="form-check-input" type="checkbox" {{ $user->hasRole('seller') ? 'checked' : '' }} name="seller">
                             <label class="form-check-label" for="seller">
                                 Seller account
                             </label>
                         </div>
+                        @endif
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </form>
                     @if ($errors->any())

@@ -33,15 +33,26 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" href="/items">{{ __('Categories') }}</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">{{ __("Today's deals") }}</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/items/create">{{ __('Sell') }}</a>
-                        </li>
+                        @guest
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('categories') }}">{{ __('Categories') }}</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">{{ __("Today's deals") }}</a>
+                            </li>
+                        @else
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('categories') }}">{{ __('Categories') }}</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">{{ __("Today's deals") }}</a>
+                            </li>
+                            @if (auth()->user()->hasRole('admin') || auth()->user()->hasRole('seller'))
+                            <li class="nav-item">
+                                <a class="nav-link" href="/items/create">{{ __('Sell') }}</a>
+                            </li>
+                            @endif
+                        @endguest
                     </ul>
 
                     <!-- Right Side Of Navbar -->
