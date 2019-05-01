@@ -20,11 +20,11 @@
                         </div>
                         <div class="form-group">
                             <label for="description">Password</label>
-                            <input type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" placeholder="Password">
+                            <input type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password">
                         </div>
                         <div class="form-group">
                             <label for="description">Confirm password</label>
-                            <input type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password_confirmation" placeholder="Confirm password">
+                            <input type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password_confirmation">
                         </div>
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </form>

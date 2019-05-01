@@ -21,6 +21,21 @@ use Session;
 class UserController extends Controller
 {
     /**
+     * Manage permissions.
+     */
+    public function __construct()
+    {
+        $this->middleware('role:admin', ['only' => ['index', 
+            'create',
+            'store',
+            'show',
+            'edit',
+            'update',
+            'destroy',
+            ]]);
+    }
+
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
