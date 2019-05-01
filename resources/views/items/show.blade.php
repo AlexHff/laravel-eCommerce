@@ -17,9 +17,13 @@
                     {{ $item->description }}<br>
                 </p>
                 <p>
-                    <a href="#">
-                    <button type="button" class="btn btn-success">Add to cart</button>
-                    </a>
+                    <form method="POST" action="{{ route('cart.add') }}">
+                        {{ csrf_field() }}
+                        <input type="hidden" name="itemId" value="{{ $item->id }}">
+                        <div class="form-group">
+                            <input type="submit" class="btn btn-success" value="Add to cart">
+                        </div>
+                    </form>
                 </p>
                 @if (auth()->user()->hasAnyRole(['seller', 'admin']))
                 <p>

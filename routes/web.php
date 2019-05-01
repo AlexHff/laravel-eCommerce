@@ -15,6 +15,9 @@ Auth::routes();
 
 Route::get('/categories', 'PageController@categories')->name('categories');
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/cart/show', 'CartController@show')->name('cart.show');
+Route::post('/cart/delete', 'CartController@delete')->name('cart.delete');
+Route::post('/cart/add', 'CartController@add')->name('cart.add');
 
 /* These routes will redirect if and only if the user is logged in */
 Route::group(['middleware' => ['auth']], function () {
