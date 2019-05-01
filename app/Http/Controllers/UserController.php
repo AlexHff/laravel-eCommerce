@@ -29,9 +29,6 @@ class UserController extends Controller
         $this->middleware('role:admin', ['only' => ['index', 
             'create',
             'store',
-            'show',
-            'edit',
-            'update',
             'destroy',
             ]]);
     }
@@ -93,7 +90,7 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        return response()->json($user,200);
+        return view('users.show', compact('user'));
     }
 
     /**
@@ -104,7 +101,12 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        return view('users.edit', compact('user'));
+        if ($user->id == auth()->user()->id || auth()->user()->hasRole('admin')) {
+            return view('users.edit', compact('user'));
+        }
+        else {
+            abort(403, "You don't have the permission to edit this user.");
+        }
     }
 
     /**
@@ -116,27 +118,32 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        $this->validate($request, [
-            'name'=>'required|max:120',
-            'email'=>'required|email|unique:users,email,'.$user->id,
-            'password'=>'required|min:8|confirmed'
-        ]);
+        if ($user->id == auth()->user()->id || auth()->user()->hasRole('admin')) {
+            $this->validate($request, [
+                'name'=>'required|max:120',
+                'email'=>'required|email|unique:users,email,'.$user->id,
+                'password'=>'required|min:8|confirmed'
+            ]);
 
-        $password = Hash::make($request->password);
-        $user->update(request(['name', 'email']));
-        $user->password = $password;
-        $user->save();
+            $password = Hash::make($request->password);
+            $user->update(request(['name', 'email']));
+            $user->password = $password;
+            $user->save();
 
-        if ($request->has('seller')) {
-            $user->assignRole('seller');
+            if ($request->has('seller')) {
+                $user->assignRole('seller');
+            }
+            else {
+                $user->removeRole('seller');
+            }
+
+            return redirect()->route('home')
+                ->with('flash_message',
+                'User successfully edited.');
         }
         else {
-            $user->removeRole('seller');
+            abort(403, "You don't have the permission to edit this user.");
         }
-
-        return redirect()->route('home')
-            ->with('flash_message',
-             'User successfully edited.');
     }
 
     /**

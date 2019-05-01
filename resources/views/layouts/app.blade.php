@@ -69,7 +69,7 @@
                                     <a class="dropdown-item" href="/home">
                                         {{ __('Dashboard') }}
                                     </a>
-                                    <a class="dropdown-item" href="/users">
+                                    <a class="dropdown-item" href="/users/{{ auth()->user()->id }}">
                                          {{ __('Account') }}
                                      </a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
