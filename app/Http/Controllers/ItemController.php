@@ -69,7 +69,7 @@ class ItemController extends Controller
             'category' => $request->category
         ]);
 
-        return response()->json($item,200);
+        return view('items.show', compact('item'));
     }
 
     /**
@@ -80,7 +80,7 @@ class ItemController extends Controller
      */
     public function show(Item $item)
     {
-        return response()->json($item,200);
+        return view('items.show', compact('item'));
     }
 
     /**
@@ -91,7 +91,7 @@ class ItemController extends Controller
      */
     public function edit(Item $item)
     {
-        return view('items/edit', compact('item'));
+        return view('items.edit', compact('item'));
     }
 
     /**
@@ -120,7 +120,7 @@ class ItemController extends Controller
         else {
             $item->update(request(['name', 'descriptions', 'price', 'units', 'image', 'category']));
         }
-        return response()->json($item,200);
+        return view('items.show', compact('item'));
     }
 
     /**
@@ -132,6 +132,6 @@ class ItemController extends Controller
     public function destroy(Item $item)
     {
         $item->delete();
-        return response();
+        return redirect('/');
     }
 }
