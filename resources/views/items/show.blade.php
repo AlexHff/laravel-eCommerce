@@ -10,9 +10,8 @@
 
                 <div class="card-body">
                 <h3>{{ $item->name }}</h3>
-                {{ $item->image }}
                 <p>
-                    <img src="{{ $item->image }}" alt="[item-image]"><br>
+                    <img src="{{ $item->image }}" alt="[item-image]" style="max-width:600px;"><br>
                     Price: <strong>${{ $item->price }}</strong><br>
                     {{ $item->units }} units left<br>
                     {{ $item->description }}<br>

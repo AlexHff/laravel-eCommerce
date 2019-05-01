@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Item;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Storage;
 use Spatie\Permission\Models\Permission;
 
 class ItemController extends Controller
@@ -60,12 +61,15 @@ class ItemController extends Controller
             ]
         ]);
 
+        $request->image->store('public');
+        $url = Storage::url($request->image->hashName());
+
         $item = Item::create([
             'name' => $request->name,
             'description' => $request->description,
             'price' => $request->price,
             'units' => $request->units,
-            'image' => $request->image,
+            'image' => $url,
             'category' => $request->category
         ]);
 
@@ -114,11 +118,17 @@ class ItemController extends Controller
                 Rule::in(['Book', 'Music', 'Clothing', 'Sports & Outdoors']),
             ]
         ]);
+
+        $request->image->store('public');
+        $url = Storage::url($request->image->hashName());
+
         if (is_null($request->image)) {
             $item->update(request(['name', 'descriptions', 'price', 'units', 'category']));
         }
         else {
-            $item->update(request(['name', 'descriptions', 'price', 'units', 'image', 'category']));
+            $item->update(request(['name', 'descriptions', 'price', 'units', 'category']));
+            $item->image = $url;
+            $item->save();
         }
         return view('items.show', compact('item'));
     }
