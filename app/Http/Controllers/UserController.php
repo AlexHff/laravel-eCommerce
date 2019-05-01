@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use Auth;
+use Hash;
 
 /**
  * User Authorization in Laravel 5.4 with Spatie Laravel-Permission
@@ -70,21 +71,18 @@ class UserController extends Controller
             'password'=>'required|min:8|confirmed'
         ]);
 
-        $user = User::create($request->only('email', 'name', 'password'));
+        $user = User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+        ]);
 
-        $roles = $request['roles'];
-
-        if (isset($roles)) {
-
-            foreach ($roles as $role) {
-            $role_r = Role::where('id', '=', $role)->firstOrFail();
-            $user->assignRole($role_r);
-            }
+        if ($request->has('seller')) {
+            $user->assignRole('seller');
         }
 
-        return redirect()->route('users.index')
-            ->with('flash_message',
-             'User successfully added.');
+        return redirect()->route('home')
+            ->with('flash_message', 'User successfully added.');
     }
 
     /**
@@ -106,9 +104,7 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        $roles = Role::get();
-
-        return view('users.edit', compact('user', 'roles'));
+        return view('users.edit', compact('user'));
     }
 
     /**
@@ -122,20 +118,23 @@ class UserController extends Controller
     {
         $this->validate($request, [
             'name'=>'required|max:120',
-            'email'=>'required|email|unique:users,email,'.$id,
+            'email'=>'required|email|unique:users,email,'.$user->id,
             'password'=>'required|min:8|confirmed'
         ]);
-        $input = $request->only(['name', 'email', 'password']);
-        $roles = $request['roles'];
-        $user->fill($input)->save();
 
-        if (isset($roles)) {
-            $user->roles()->sync($roles);
+        $password = Hash::make($request->password);
+        $user->update(request(['name', 'email']));
+        $user->password = $password;
+        $user->save();
+
+        if ($request->has('seller')) {
+            $user->assignRole('seller');
         }
         else {
-            $user->roles()->detach();
+            $user->removeRole('seller');
         }
-        return redirect()->route('users.index')
+
+        return redirect()->route('home')
             ->with('flash_message',
              'User successfully edited.');
     }

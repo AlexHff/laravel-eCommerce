@@ -17,8 +17,7 @@
 
                     You are logged in!
                     <br>
-                    Role: {{ auth()->user()->getRoleNames() }} | 
-                    Permissions: {{ auth()->user()->getAllPermissions() }}
+                    Role: {{ auth()->user()->getRoleNames() }}
                 </div>
             </div>
         </div>

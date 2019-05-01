@@ -12,23 +12,23 @@
                         @csrf
                         <div class="form-group">
                             <label for="name">Name</label>
-                            <input type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" placeholder="Name">
+                            <input type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" placeholder="Name" value="{{ old('name') }}">
                         </div>
                         <div class="form-group">
                             <label for="description">Description</label>
-                            <input type="text" class="form-control{{ $errors->has('description') ? ' is-invalid' : '' }}" name="description" placeholder="Description">
+                            <input type="text" class="form-control{{ $errors->has('description') ? ' is-invalid' : '' }}" name="description" placeholder="Description" value="{{ old('description') }}">
                         </div>
                         <div class="form-group">
                             <label for="price">Price</label>
-                            <input type="number" step="0.01" class="form-control{{ $errors->has('price') ? ' is-invalid' : '' }}" name="price" placeholder="Price"min="0">
+                            <input type="number" step="0.01" class="form-control{{ $errors->has('price') ? ' is-invalid' : '' }}" name="price" placeholder="Price"min="0" value="{{ old('price') }}">
                         </div>
                         <div class="form-group">
                             <label for="units">Units</label>
-                            <input type="number" class="form-control{{ $errors->has('units') ? ' is-invalid' : '' }}" name="units" placeholder="Units" min="0">
+                            <input type="number" class="form-control{{ $errors->has('units') ? ' is-invalid' : '' }}" name="units" placeholder="Units" min="0" value="{{ old('units') }}">
                         </div>
                         <div class="form-group">
                             <label for="category">Category</label>
-                            <select class="form-control{{ $errors->has('category') ? ' is-invalid' : '' }}" name="category" placeholder="Choose a category...">
+                            <select class="form-control{{ $errors->has('category') ? ' is-invalid' : '' }}" name="category" placeholder="Choose a category..." value="{{ old('category') }}">
                               <option>Book</option>
                               <option>Music</option>
                               <option>Clothing</option>

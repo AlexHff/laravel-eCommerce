@@ -6,9 +6,10 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Edit user</div>
+                <div class="card-header">Edit a user</div>
                 <div class="card-body">
-                    <form  method="POST" action="{{ route('users.store') }}">
+                    <form  method="POST" action="/users/{{ $user->id }}">
+                        @method('PATCH')
                         @csrf
                         <div class="form-group">
                             <label for="name">Name</label>
@@ -25,6 +26,12 @@
                         <div class="form-group">
                             <label for="description">Confirm password</label>
                             <input type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password_confirmation">
+                        </div>
+                        <div class="form-check" style="margin-bottom:1em">
+                            <input class="form-check-input" type="checkbox" {{ $user->hasRole('seller') ? 'checked' : '' }} name="seller">
+                            <label class="form-check-label" for="seller">
+                                Seller account
+                            </label>
                         </div>
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </form>

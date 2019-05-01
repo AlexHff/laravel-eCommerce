@@ -8,7 +8,7 @@
             <div class="card">
                 <div class="card-header">Edit an item</div>
                 <div class="card-body">
-                    <form  method="POST" action="/items/{{ $item->id}}" enctype="multipart/form-data">
+                    <form  method="POST" action="/items/{{ $item->id }}" enctype="multipart/form-data">
                         @method('PATCH')
                         @csrf
                         <div class="form-group">

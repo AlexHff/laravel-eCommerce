@@ -12,11 +12,11 @@
                         @csrf
                         <div class="form-group">
                             <label for="name">Name</label>
-                            <input type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" placeholder="Name">
+                            <input type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" placeholder="Name" value="{{ old('name') }}">
                         </div>
                         <div class="form-group">
                             <label for="description">Email</label>
-                            <input type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" placeholder="Email">
+                            <input type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" placeholder="Email" value="{{ old('email') }}">
                         </div>
                         <div class="form-group">
                             <label for="description">Password</label>
@@ -25,6 +25,12 @@
                         <div class="form-group">
                             <label for="description">Confirm password</label>
                             <input type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password_confirmation" placeholder="Confirm password">
+                        </div>
+                        <div class="form-check" style="margin-bottom:1em">
+                            <input class="form-check-input" type="checkbox" name="seller">
+                            <label class="form-check-label" for="seller">
+                                Seller account
+                            </label>
                         </div>
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </form>
