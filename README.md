@@ -1,5 +1,6 @@
 # ece-piscine
 An eCommerce Web Platform written in HTML5, CSS, javascript and PHP using Laravel Framework.
+[http://ece-piscine.herokuapp.com/](http://ece-piscine.herokuapp.com/)
 
 ## Installation
 To quickly install Composer in the current directory, run the following script in your terminal.
