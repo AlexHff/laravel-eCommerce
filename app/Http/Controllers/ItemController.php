@@ -5,9 +5,20 @@ namespace App\Http\Controllers;
 use App\Item;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
+use Spatie\Permission\Models\Permission;
 
 class ItemController extends Controller
 {
+    /**
+     * Manage permissions.
+     */
+    public function __construct()
+    {
+        $this->middleware('permission:create_items', ['only' => ['create','store']]);
+        $this->middleware('permission:edit_items', ['only' => ['edit','update']]);
+        $this->middleware('permission:delete_items', ['only' => ['destroy']]);
+    }
+
     /**
      * Display a listing of the resource.
      *

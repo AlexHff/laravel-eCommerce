@@ -12,16 +12,19 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        /**
-         * Create one admin.
-         */
-
-        User::create([
+        $user = User::create([
             'name' => 'admin',
             'email' => 'admin@example.com',
             'password' => Hash::make('admin123'),
-            'isAdmin' => true,
         ]);
+        $user->assignRole('admin');
+
+        $user = User::create([
+            'name' => 'seller',
+            'email' => 'seller@example.com',
+            'password' => Hash::make('seller123'),
+        ]);
+        $user->assignRole('seller');
 
         User::create([
             'name' => 'user',

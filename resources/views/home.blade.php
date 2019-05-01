@@ -16,12 +16,9 @@
                     @endif
 
                     You are logged in!
-
-                    @if (auth()->user()->isAdmin == 1)
-                        You are admin.
-                    @else
-                        You are normal user.
-                    @endif
+                    <br>
+                    Role: {{ auth()->user()->getRoleNames() }} | 
+                    Permissions: {{ auth()->user()->getAllPermissions() }}
                 </div>
             </div>
         </div>
