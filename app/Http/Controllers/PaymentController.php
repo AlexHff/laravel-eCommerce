@@ -51,6 +51,11 @@ class PaymentController extends Controller
                 return redirect()->route('payment.pay');
             }
 
+            $cards = $stripe->cards()->all(auth()->user()->stripe_id);
+            foreach ($cards['data'] as $card) {
+                dd($card['number']);
+            }
+
             $charge = $stripe->charges()->create([
                 'customer' => auth()->user()->stripe_id,
                 'currency' => 'USD',
@@ -62,19 +67,18 @@ class PaymentController extends Controller
                 return redirect()->route('payment.success');
             }
             else {
-                \Session::put('error','Money not add in wallet!!');
-                return redirect()->route('payment.pay');
+                return back()->withError('Payment not successful...')->withInput();
             }
         }
 
         catch (Exception $e) {
-            \Session::put('error',$e->getMessage());
+            return back()->withError($e->getMessage())->withInput();
             return redirect()->route('payment.pay');
             } catch(\Cartalyst\Stripe\Exception\CardErrorException $e) {
-            \Session::put('error',$e->getMessage());
+                return back()->withError($e->getMessage())->withInput();
             return redirect()->route('payment.pay');
             } catch(\Cartalyst\Stripe\Exception\MissingParameterException $e) {
-            \Session::put('error',$e->getMessage());
+                return back()->withError($e->getMessage())->withInput();
             return redirect()->route('payment.pay');
         }
     }

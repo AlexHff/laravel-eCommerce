@@ -62,6 +62,10 @@
                             </ul>
                         </div>
                     @endif
+                    @if (session('error'))
+                    <br>
+                        <div class="alert alert-danger">{{ session('error') }}</div>
+                    @endif
                 </div>
             </div>
         </div>

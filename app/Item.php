@@ -41,4 +41,8 @@ class Item extends Model
     protected $fillable = [
         'name', 'description', 'price', 'units', 'image', 'category'
     ];
+
+    public function musics() {
+        return $this->hasMany(Music::class);
+    }
 }
