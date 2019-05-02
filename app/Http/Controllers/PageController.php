@@ -13,4 +13,8 @@ class PageController extends Controller
     public function categories() {
         return view("categories");
     }
+
+    public function deals() {
+        return view("deals");
+    }
 }

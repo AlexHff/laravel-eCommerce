@@ -38,14 +38,14 @@
                                 <a class="nav-link" href="{{ route('categories') }}">{{ __('Categories') }}</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">{{ __("Today's deals") }}</a>
+                                <a class="nav-link" href="{{ route('deals') }}">{{ __("Today's deals") }}</a>
                             </li>
                         @else
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('categories') }}">{{ __('Categories') }}</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">{{ __("Today's deals") }}</a>
+                                <a class="nav-link" href="{{ route('deals') }}">{{ __("Today's deals") }}</a>
                             </li>
                             @if (auth()->user()->hasRole('admin') || auth()->user()->hasRole('seller'))
                             <li class="nav-item">
