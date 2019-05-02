@@ -10,6 +10,7 @@
                     <tr>
                     <th scope="col">Name</th>
                     <th scope="col">Description</th>
+                    <th scope="col">Category</th>
                     <th scope="col">Price</th>
                     <th scope="col">Units</th>
                     </tr>
@@ -23,6 +24,7 @@
                                 </a>
                             </td>
                             <td>{{ $item->description }}</td>
+                            <td>{{ $item->category }}</td>
                             <td>${{ $item->price }}</td>
                             <td>{{ $item->units }}</td>
                         </tr>

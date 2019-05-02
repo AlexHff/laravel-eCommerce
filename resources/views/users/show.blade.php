@@ -29,11 +29,21 @@
                     </tbody>
                 </table>
                 @if (auth()->user()->hasRole('admin') || auth()->user()->id === $user->id)
-                <p>
-                <a href="{{ url('users/'.$user->id.'/edit') }}">
-                    <button type="button" class="btn btn-primary">Edit</button>
-                </a>
-                </p>
+                    <p>
+                    <a href="{{ url('users/'.$user->id.'/edit') }}">
+                        <button type="button" class="btn btn-primary">Edit</button>
+                    </a>
+                    </p>
+                @endif
+                @if (auth()->user()->hasRole('admin'))
+                    <form method="POST" action="/users/{{$user->id}}">
+                        {{ csrf_field() }}
+                        {{ method_field('DELETE') }}
+
+                        <div class="form-group">
+                            <input type="submit" class="btn btn-danger" value="Delete">
+                        </div>
+                    </form>
                 @endif
                 </div>
             </div>

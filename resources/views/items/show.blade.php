@@ -10,6 +10,7 @@
 
                 <div class="card-body">
                 <h3>{{ $item->name }}</h3>
+                {{ $item->category }}
                 <p>
                     <img src="{{ $item->image }}" alt="[item-image]" style="max-width:600px;"><br>
                     Price: <strong>${{ $item->price }}</strong><br>
@@ -33,7 +34,7 @@
                 <form method="POST" action="/items/{{$item->id}}">
                     {{ csrf_field() }}
                     {{ method_field('DELETE') }}
-            
+
                     <div class="form-group">
                         <input type="submit" class="btn btn-danger" value="Delete">
                     </div>

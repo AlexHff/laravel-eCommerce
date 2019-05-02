@@ -26,7 +26,15 @@ class CartController extends Controller
     {
         Cart::setGlobalTax(0);
         $item = Item::findOrFail($request->itemId);
-        Cart::add($item->id, $item->name, 1, $item->price);
+        Cart::add([
+            'id' => $item->id,
+            'name' => $item->name,
+            'qty' => 1,
+            'price' => $item->price,
+            'weight' => 0,
+            'options' => [
+                'image' => $item->image, ]
+            ]);
         return view('cart.show');
     }
 }

@@ -13,6 +13,7 @@
                     <table class="table table-hover">
                         <thead>
                             <tr>
+                            <th scope="col"></th>
                             <th scope="col">Item name</th>
                             <th scope="col">Price</th>
                             <th scope="col">Qty</th>
@@ -24,13 +25,18 @@
                             @foreach (Cart::content() as $item)
                                 <tr>
                                 <td>
+                                    <a href="{{ url('items/'.$item->id) }}">
+                                        <img src="{{ $item->options->image }}" alt="[item-image]" style="max-height:100px; max-width:100px;">
+                                    </a>
+                                </td>
+                                <td>
                                     <a href="{{ url('items/'.$item->id) }}" style="color:inherit; text-decoration: none">
                                     {{ $item->name }}
                                     </a>
                                 </td>
                                 <td>${{ $item->price }}</td>
                                 <td>{{ $item->qty }}</td>
-                                <td>{{ $item->total }}</td>
+                                <td>${{ $item->total }}</td>
                                 <td>
                                     <form method="POST" action="{{ route('cart.delete') }}">
                                         {{ csrf_field() }}
@@ -47,7 +53,7 @@
                             <tr>
                                 <td colspan="3">&nbsp;</td>
                                 <td><strong>Total</strong></td>
-                                <td><strong>{{ Cart::total() }}</strong></td>
+                                <td><strong>${{ Cart::total() }}</strong></td>
                                 <td></td>
                             </tr>
                         </tfoot>
