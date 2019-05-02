@@ -22,7 +22,7 @@ composer global require laravel/installer
 ```
 Clone this repo and change to the directory.
 
-##Usage
+## Usage
 Run:
 ``` bash
 php artisan serve
@@ -45,3 +45,20 @@ Go to [http://localhost:8000](http://localhost:8000) and voilà!
 - [User Authorization in Laravel 5.4 with Spatie Laravel-Permission](https://scotch.io/tutorials/user-authorization-in-laravel-54-with-spatie-laravel-permission)
 - [LaravelShoppingcart by bumbummen99](https://github.com/bumbummen99/LaravelShoppingcart)
 - [Algolia Documentation](https://www.algolia.com/doc)
+- [Stripe Documentation](https://stripe.com/docs)
+- [Stripe Laravel](https://github.com/cartalyst/stripe-laravel)
+
+## Credentials and credit card information
+This information is for testing purposes.
+
+admin@example.com
+admin123
+
+seller@example.com
+seller123
+
+user@example.com
+user123
+4000002500000003
+123
+12/21

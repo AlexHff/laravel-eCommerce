@@ -17,7 +17,7 @@
 
                     You are logged in!
                     <br>
-                    Role: {{ auth()->user()->getRoleNames() }}
+                    {{ auth()->user()->stripe_id }}
                 </div>
             </div>
         </div>

@@ -58,13 +58,7 @@
                             </tr>
                         </tfoot>
                     </table>
-                    <form method="POST" action="">
-                        {{ csrf_field() }}
-                        <input type="hidden" name="rowId" value="{{ $item->rowId }}">
-                        <div class="form-group">
-                            <input type="submit" class="btn btn-primary" value="Proceed to checkout">
-                        </div>
-                    </form>
+                    <a href="/payment/pay"><button type="button" class="btn btn-primary">Proceed to checkout</button></a>
                 @else
                     <p>Your cart is empty.</p>
                 @endif

@@ -17,7 +17,8 @@
         "laravel/scout": "^7.1",
         "laravel/tinker": "^1.0",
         "spatie/laravel-permission": "^2.37",
-        "twbs/bootstrap": "^4.3"
+        "twbs/bootstrap": "^4.3",
+        "cartalyst/stripe-laravel": "10.0.*"
     },
     "require-dev": {
         "beyondcode/laravel-dump-server": "^1.0",

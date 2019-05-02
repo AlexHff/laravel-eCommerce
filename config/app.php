@@ -180,6 +180,11 @@ return [
          */
         Spatie\Permission\PermissionServiceProvider::class,
 
+        /*
+         * Stripe Service Provider
+         */
+        Cartalyst\Stripe\Laravel\StripeServiceProvider::class,
+
     ],
 
     /*
@@ -230,6 +235,11 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+
+        /*
+         * Stripe alias
+         */
+        'Stripe' => Cartalyst\Stripe\Laravel\Facades\Stripe::class,
 
     ],
 
