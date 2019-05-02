@@ -23,7 +23,11 @@
                         <tbody>
                             @foreach (Cart::content() as $item)
                                 <tr>
-                                <td>{{ $item->name }}</td>
+                                <td>
+                                    <a href="{{ url('items/'.$item->id) }}" style="color:inherit; text-decoration: none">
+                                    {{ $item->name }}
+                                    </a>
+                                </td>
                                 <td>${{ $item->price }}</td>
                                 <td>{{ $item->qty }}</td>
                                 <td>{{ $item->total }}</td>

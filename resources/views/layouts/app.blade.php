@@ -55,6 +55,13 @@
                         @endguest
                     </ul>
 
+                    <!-- Search bar -->
+                    <form class="form-inline my-2 my-lg-0 mx-2" method="POST" action="{{ route('items.search') }}">
+                        @csrf
+                        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="search">
+                        <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
+                    </form>
+
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->

@@ -23,6 +23,7 @@ Route::post('/cart/add', 'CartController@add')->name('cart.add');
 Route::group(['middleware' => ['auth']], function () {
     Route::resource('users', 'UserController');
     Route::resource('items', 'ItemController');
+    Route::post('/items/search', 'ItemController@search')->name('items.search');
 });
 
 /* Redirect all other links to index page */

@@ -44,3 +44,4 @@ Go to [http://localhost:8000](http://localhost:8000) and voilà!
 - [Spatie Laravel-Permission](https://github.com/spatie/laravel-permission)
 - [User Authorization in Laravel 5.4 with Spatie Laravel-Permission](https://scotch.io/tutorials/user-authorization-in-laravel-54-with-spatie-laravel-permission)
 - [LaravelShoppingcart by bumbummen99](https://github.com/bumbummen99/LaravelShoppingcart)
+- [Algolia Documentation](https://www.algolia.com/doc)

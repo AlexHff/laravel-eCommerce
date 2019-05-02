@@ -25,7 +25,7 @@ class ItemController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Item $items)
     {
         $items = Item::all();
         return view('items/index', compact('items'));
@@ -73,6 +73,8 @@ class ItemController extends Controller
             'category' => $request->category
         ]);
 
+        $item->save();
+
         return view('items.show', compact('item'));
     }
 
@@ -119,18 +121,29 @@ class ItemController extends Controller
             ]
         ]);
 
-        $request->image->store('public');
-        $url = Storage::url($request->image->hashName());
+        $item->update(request(['name', 'descriptions', 'price', 'units', 'category']));
 
-        if (is_null($request->image)) {
-            $item->update(request(['name', 'descriptions', 'price', 'units', 'category']));
-        }
-        else {
+        if (!is_null($request->image)) {
+            $request->image->store('public');
+            $url = Storage::url($request->image->hashName());
             $item->update(request(['name', 'descriptions', 'price', 'units', 'category']));
             $item->image = $url;
-            $item->save();
         }
+        $item->save();
+
         return view('items.show', compact('item'));
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Item  $item
+     * @return \Illuminate\Http\Response
+     */
+    public function search(Request $request)
+    {
+        $items = Item::search($request->search)->get();
+        return view('items/index', compact('items'));
     }
 
     /**
