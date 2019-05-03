@@ -1,6 +1,6 @@
 # ece-piscine Amazon
 An eCommerce Web Platform written in HTML5, CSS, javascript and PHP using Laravel Framework.
-ECE piscine Amazon
+ECE piscine Amazon.
 
 ## Installation
 To quickly install Composer in the current directory, run the following script in your terminal.
