@@ -21,6 +21,38 @@
                         <td>Email</td>
                         <td>{{ $user->email }}</td>
                         </tr>
+                        <tr>
+                        <td>First name</td>
+                        <td>{{ $user->firstname }}</td>
+                        </tr>
+                        <tr>
+                        <td>Last name</td>
+                        <td>{{ $user->lastname }}</td>
+                        </tr>
+                        <tr>
+                        <td>Address 1</td>
+                        <td>{{ $user->address1 }}</td>
+                        </tr>
+                        <tr>
+                        <td>Address 2</td>
+                        <td>{{ $user->address2 }}</td>
+                        </tr>
+                        <tr>
+                        <td>City</td>
+                        <td>{{ $user->city }}</td>
+                        </tr>
+                        <tr>
+                        <td>Postal code</td>
+                        <td>{{ $user->postal }}</td>
+                        </tr>
+                        <tr>
+                        <td>Country</td>
+                        <td>{{ $user->country }}</td>
+                        </tr>
+                        <tr>
+                        <td>Phone</td>
+                        <td>{{ $user->phone }}</td>
+                        </tr>
                         @endif
                         <tr>
                         <td>Seller account</td>

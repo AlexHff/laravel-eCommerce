@@ -66,7 +66,7 @@ class UserController extends Controller
         $this->validate($request, [
             'name'=>'required|max:120',
             'email'=>'required|email|unique:users',
-            'password'=>'required|min:8|confirmed'
+            'password'=>'required|min:8|confirmed',
         ]);
 
         $user = User::create([
@@ -123,11 +123,19 @@ class UserController extends Controller
             $this->validate($request, [
                 'name'=>'required|max:120',
                 'email'=>'required|email|unique:users,email,'.$user->id,
-                'password'=>'required|min:6|confirmed'
+                'password'=>'required|min:6|confirmed',
+                'firstname' =>'nullable',
+                'lastname' => 'nullable',
+                'address1' => 'nullable',
+                'address2' => 'nullable',
+                'city' => 'nullable',
+                'postal' => 'nullable',
+                'country' => 'nullable',
+                'phone' => 'nullable|numeric',
             ]);
 
+            $user->update(request(['name', 'email', 'firstname', 'lastname', 'address1', 'address2', 'city', 'postal', 'country', 'phone']));
             $password = Hash::make($request->password);
-            $user->update(request(['name', 'email']));
             $user->password = $password;
             $user->save();
 
