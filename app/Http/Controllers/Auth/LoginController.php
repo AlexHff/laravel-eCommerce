@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use Cart;
 use Auth;
+use Session;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
@@ -48,6 +49,7 @@ class LoginController extends Controller
     public function logout(Request $request) {
         Cart::store(auth()->user()->email);
         Auth::logout();
+        Session::flush();
         return redirect('/');
     }
 }
