@@ -15,9 +15,16 @@
                         </div>
                     @endif
 
-                    You are logged in!
-                    <br>
-                    {{ auth()->user()->stripe_id }}
+                    <p>Welcome, {{ auth()->user()->name }}!</p>
+                    <a href="{{ route('cart.show') }}"  style="color:inherit; text-decoration: none">
+                        <button type="button" class="btn btn-lg btn-block btn-outline-primary">My Cart</button>
+                    </a><br>
+                    <a href="/users/{{ auth()->user()->id }}"  style="color:inherit; text-decoration: none">
+                        <button type="button" class="btn btn-lg btn-block btn-outline-primary">My Profile</button>
+                    </a><br>
+                    <a href="/payment/show"  style="color:inherit; text-decoration: none">
+                        <button type="button" class="btn btn-lg btn-block btn-outline-primary">My Payment information</button>
+                    </a>
                 </div>
             </div>
         </div>

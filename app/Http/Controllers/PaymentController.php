@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * Simplify Your Online Payments With Laravel Stripe Payment Gateway Integration
+ * https://www.cloudways.com/blog/laravel-stripe-integration/
+ */
+
 namespace App\Http\Controllers;
 
 use Cart;
@@ -16,12 +21,15 @@ class PaymentController extends Controller
         return view('payment.success');
     }
 
-    /**
-     * Simplify Your Online Payments With Laravel Stripe Payment Gateway Integration
-     * https://www.cloudways.com/blog/laravel-stripe-integration/
-     */
+    public function show() {
+        return view('payment.show');
+    }
 
-    public function validation(Request $request) {
+    public function create() {
+        return view('payment.create');
+    }
+
+    public function store(Request $request) {
         $this->validate($request, [
             'card_number'=>'required',
             'expiration_month'=>'required',
@@ -29,13 +37,13 @@ class PaymentController extends Controller
             'cvc'=>'required',
         ]);
 
-        //return to login verification
+        env('STRIPE_API_KEY');
+        $stripe = Stripe::make();
 
         $input = $request->all();
         $input = array_except($input,array('_token'));
 
-        env('STRIPE_API_KEY');
-        $stripe = Stripe::make();
+        $user = auth()->user();
 
         try {
             $token = $stripe->tokens()->create([
@@ -51,23 +59,23 @@ class PaymentController extends Controller
                 return redirect()->route('payment.pay');
             }
 
-            $cards = $stripe->cards()->all(auth()->user()->stripe_id);
-            foreach ($cards['data'] as $card) {
-                dd($card['number']);
-            }
-
-            $charge = $stripe->charges()->create([
-                'customer' => auth()->user()->stripe_id,
-                'currency' => 'USD',
-                'amount' => Cart::total(),
-            ]);
-
-            if($charge['status'] == 'succeeded') {
-                Cart::destroy();
-                return redirect()->route('payment.success');
+            if(isset($user->stripe_id)){
+                $customer = $stripe->customers()->find($user->stripe_id);
             }
             else {
-                return back()->withError('Payment not successful...')->withInput();
+                $customer = $stripe->customers()->create([
+                    'email' => $user->email,
+                ]);
+                $user->stripe_id = $customer['id'];
+                $user->save();
+            }
+
+            if($customer['created'] != null) {
+                $stripe->cards()->create($user->stripe_id, $token['id']);
+                return redirect()->route('payment.show');
+            }
+            else {
+                return back()->withError('Could not create customer.')->withInput();
             }
         }
 
@@ -81,5 +89,55 @@ class PaymentController extends Controller
                 return back()->withError($e->getMessage())->withInput();
             return redirect()->route('payment.pay');
         }
+    }
+
+    public function validation(Request $request) {
+        $this->validate($request, [
+            'card_number'=>'required',
+            'expiration_month'=>'required',
+            'expiration_year'=>'required',
+            'cvc'=>'required',
+        ]);
+
+        //return to login verification
+
+        env('STRIPE_API_KEY');
+        $stripe = Stripe::make();
+
+        try {
+            $charge = $stripe->charges()->create([
+                'customer' => auth()->user()->stripe_id,
+                'currency' => 'USD',
+                'amount' => Cart::total(),
+            ]);
+
+            if($charge['status'] == 'succeeded') {
+                Cart::destroy();
+                return redirect()->route('payment.success');
+            }
+            else {
+                return back()->withError('Payment not successful.')->withInput();
+            }
+        }
+
+        catch (Exception $e) {
+            return back()->withError($e->getMessage())->withInput();
+            return redirect()->route('payment.pay');
+            } catch(\Cartalyst\Stripe\Exception\CardErrorException $e) {
+                return back()->withError($e->getMessage())->withInput();
+            return redirect()->route('payment.pay');
+            } catch(\Cartalyst\Stripe\Exception\MissingParameterException $e) {
+                return back()->withError($e->getMessage())->withInput();
+            return redirect()->route('payment.pay');
+        }
+    }
+
+    public function delete(Request $request) {
+        env('STRIPE_API_KEY');
+        $stripe = Stripe::make();
+        $user = auth()->user();
+
+        $card = $stripe->cards()->delete($user->stripe_id, $request->card_id);
+        return redirect('payment/show');
     }
 }

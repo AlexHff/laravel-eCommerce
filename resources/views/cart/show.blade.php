@@ -39,7 +39,7 @@
                                 <td>${{ $item->total }}</td>
                                 <td>
                                     <form method="POST" action="{{ route('cart.delete') }}">
-                                        {{ csrf_field() }}
+                                        @csrf
                                         <input type="hidden" name="rowId" value="{{ $item->rowId }}">
                                         <div class="form-group">
                                             <input type="submit" class="btn btn-danger btn-sm" value="Delete">

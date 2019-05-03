@@ -30,6 +30,7 @@ class UsersTableSeeder extends Seeder
             'name' => 'user',
             'email' => 'user@example.com',
             'password' => Hash::make('user123'),
+            'stripe_id' => 'cus_Ezbx8AyZMuIGH9',
         ]);
     }
 }

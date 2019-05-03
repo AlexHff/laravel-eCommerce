@@ -25,6 +25,10 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/cart/show', 'CartController@show')->name('cart.show');
     Route::post('/cart/delete', 'CartController@delete')->name('cart.delete');
     Route::post('/cart/add', 'CartController@add')->name('cart.add');
+    Route::get('/payment/show', 'PaymentController@show')->name('payment.show');
+    Route::get('/payment/create', 'PaymentController@create')->name('payment.create');
+    Route::post('/payment/store', 'PaymentController@store')->name('payment.store');
+    Route::post('/payment/delete', 'PaymentController@delete')->name('payment.delete');
     Route::get('/payment/pay', 'PaymentController@pay')->name('payment.pay');
     Route::post('/payment/validation', 'PaymentController@validation')->name('payment.validation');
     Route::get('/payment/success', 'PaymentController@success')->name('payment.success');
