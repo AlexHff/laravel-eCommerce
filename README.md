@@ -1,5 +1,6 @@
-# ece-piscine
+# ece-piscine Amazon
 An eCommerce Web Platform written in HTML5, CSS, javascript and PHP using Laravel Framework.
+ECE piscine Amazon
 
 ## Installation
 To quickly install Composer in the current directory, run the following script in your terminal.
@@ -49,5 +50,3 @@ Go to [http://localhost:8000](http://localhost:8000) (or any indicated address) 
 - [Algolia Documentation](https://www.algolia.com/doc)
 - [Stripe Documentation](https://stripe.com/docs)
 - [Stripe Laravel](https://github.com/cartalyst/stripe-laravel)
-- [HTML Country Select Dropdown List](https://gist.github.com/danrovito/977bcb97c9c2dfd3398a)
-
