@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers\Auth;
 
+use Cart;
+use Auth;
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
@@ -35,5 +38,16 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+    }
+
+    public function authenticated(){
+        Cart::restore(auth()->user()->email);
+        return redirect()->intended($this->redirectPath());
+    }
+
+    public function logout(Request $request) {
+        Cart::store(auth()->user()->email);
+        Auth::logout();
+        return redirect('/');
     }
 }
