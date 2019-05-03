@@ -30,6 +30,8 @@ class CreateUsersTable extends Migration
             $table->string('country')->nullable();
             $table->string('phone')->nullable();
             $table->string('stripe_id')->nullable()->collation('utf8mb4_bin');
+            $table->string('user_image')->nullable();
+            $table->string('background_image')->nullable();
         });
     }
 

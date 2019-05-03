@@ -10,6 +10,8 @@
 
                 <div class="card-body">
                 <h3>{{ $user->name }}'s profile</h3>
+                <img src="{{ $user->user_image }}" alt="[profile-image]" style="max-width:600px;"><br>
+                <img src="{{ $user->background_image }}" alt="[background-image]" style="max-width:600px;"><br>
                 <table class="table">
                     <tbody>
                         <tr>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 use App\User;
 use Auth;
@@ -132,11 +133,26 @@ class UserController extends Controller
                 'postal' => 'nullable',
                 'country' => 'nullable',
                 'phone' => 'nullable|numeric',
+                'user_image' => 'nullable|image|max:10000',
+                'background_image' => 'nullable|image|max:10000',
             ]);
 
             $user->update(request(['name', 'email', 'firstname', 'lastname', 'address1', 'address2', 'city', 'postal', 'country', 'phone']));
             $password = Hash::make($request->password);
             $user->password = $password;
+
+            if (!is_null($request->user_image)) {
+                $request->user_image->store('public');
+                $url = Storage::url($request->user_image->hashName());
+                $user->update(request(['name', 'descriptions', 'price', 'units', 'category']));
+                $user->user_image = $url;
+            }
+            if (!is_null($request->background_image)) {
+                $request->background_image->store('public');
+                $url = Storage::url($request->background_image->hashName());
+                $user->update(request(['name', 'descriptions', 'price', 'units', 'category']));
+                $user->background_image = $url;
+            }
             $user->save();
 
             if ($request->has('seller')) {

@@ -8,7 +8,7 @@
             <div class="card">
                 <div class="card-header">Edit a user</div>
                 <div class="card-body">
-                    <form  method="POST" action="/users/{{ $user->id }}">
+                    <form  method="POST" action="/users/{{ $user->id }}"  enctype="multipart/form-data">
                         @method('PATCH')
                         @csrf
                         <div class="form-group">
@@ -302,6 +302,14 @@
                         <div class="form-group">
                             <label for="phone">Phone</label>
                             <input type="phone" class="form-control{{ $errors->has('phone') ? ' is-invalid' : '' }}" name="phone" placeholder="Phone" value="{{ $user->phone }}">
+                        </div>
+                        <div class="form-group">
+                            <label for="user_image">Profile picture</label>
+                            <input type="file" name="user_image" value="{{ $user->user_image }}">
+                        </div>
+                        <div class="form-group">
+                            <label for="background_image">Background image</label>
+                            <input type="file" name="background_image" value="{{ $user->background_image }}">
                         </div>
                         @if (auth()->user()->hasRole('admin'))
                         <div class="form-check" style="margin-bottom:1em">
