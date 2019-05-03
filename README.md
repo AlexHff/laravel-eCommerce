@@ -1,6 +1,5 @@
 # ece-piscine
 An eCommerce Web Platform written in HTML5, CSS, javascript and PHP using Laravel Framework.
-[http://ece-piscine.herokuapp.com/](http://ece-piscine.herokuapp.com/)
 
 ## Installation
 To quickly install Composer in the current directory, run the following script in your terminal.
@@ -20,7 +19,10 @@ Now, download the Laravel installer using Composer:
 ``` bash
 composer global require laravel/installer
 ```
-Clone this repo and change to the directory.
+Clone this repo and change to the directory. Then run:
+``` bash
+composer install
+```
 
 ## Usage
 Run:
@@ -33,7 +35,7 @@ And
 php artisan migrate --seed
 ```
 
-Go to [http://localhost:8000](http://localhost:8000) and voilà!
+Go to [http://localhost:8000](http://localhost:8000) (or any indicated address) and voilà!
 
 ## References
 - [Laravel Documentation](https://laravel.com/docs/5.8)

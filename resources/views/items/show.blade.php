@@ -22,6 +22,9 @@
                         {{ csrf_field() }}
                         <input type="hidden" name="itemId" value="{{ $item->id }}">
                         <div class="form-group">
+                            <input type="number" class="form-control{{ $errors->has('units') ? ' is-invalid' : '' }}" name="units" min="1" value="{{ old('units') || 1 }}">
+                        </div>
+                        <div class="form-group">
                             <input type="submit" class="btn btn-success" value="Add to cart">
                         </div>
                     </form>
@@ -40,6 +43,9 @@
                     </div>
                 </form>
                 </p>
+                @endif
+                @if (session('error'))
+                    <div class="alert alert-danger">{{ session('error') }}</div>
                 @endif
                 </div>
             </div>
