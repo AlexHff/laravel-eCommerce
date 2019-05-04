@@ -19,7 +19,6 @@ class CreateBooksTable extends Migration
             $table->unsignedBigInteger('item_id');
             $table->string('author');
             $table->Integer('release');
-            $table->foreign('item_id')->references('id')->on('items')->onDelete('cascade');
         });
     }
 

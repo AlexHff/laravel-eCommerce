@@ -19,7 +19,6 @@ class CreateMusicsTable extends Migration
             $table->unsignedBigInteger('item_id');
             $table->string('author');
             $table->string('album');
-            $table->foreign('item_id')->references('id')->on('items')->onDelete('cascade');
         });
     }
 

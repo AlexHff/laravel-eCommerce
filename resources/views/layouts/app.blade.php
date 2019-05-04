@@ -26,7 +26,7 @@
         <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    <img src="/storage/logo.png" alt="logo" height="32" width="auto">
+                    <img src="/storage/icons/logo.png" alt="logo" height="32" width="auto">
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -37,21 +37,21 @@
                     <ul class="navbar-nav mr-auto">
                         @guest
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('categories') }}"><img src="/storage/categories.png" alt="categories" height="18" width="18"> {{ __('Categories') }}</a>
+                                <a class="nav-link" href="{{ route('categories') }}"><img src="/storage/icons/categories.png" alt="categories" height="18" width="18"> {{ __('Categories') }}</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('deals') }}"><img src="/storage/deals.png" alt="deals" height="18" width="18"> {{ __("Today's deals") }}</a>
+                                <a class="nav-link" href="{{ route('deals') }}"><img src="/storage/icons/deals.png" alt="deals" height="18" width="18"> {{ __("Today's deals") }}</a>
                             </li>
                         @else
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('categories') }}"><img src="/storage/categories.png" alt="categories" height="18" width="18"> {{ __('Categories') }}</a>
+                                <a class="nav-link" href="{{ route('categories') }}"><img src="/storage/icons/categories.png" alt="categories" height="18" width="18"> {{ __('Categories') }}</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('deals') }}"><img src="/storage/deals.png" alt="deals" height="18" width="18"> {{ __("Today's deals") }}</a>
+                                <a class="nav-link" href="{{ route('deals') }}"><img src="/storage/icons/deals.png" alt="deals" height="18" width="18"> {{ __("Today's deals") }}</a>
                             </li>
                             @if (auth()->user()->hasRole('admin') || auth()->user()->hasRole('seller'))
                             <li class="nav-item">
-                                <a class="nav-link" href="/items/create"><img src="/storage/sell.png" alt="sell" height="18" width="18"> {{ __('Sell') }}</a>
+                                <a class="nav-link" href="/sell"><img src="/storage/icons/sell.png" alt="sell" height="18" width="18"> {{ __('Sell') }}</a>
                             </li>
                             @endif
                         @endguest
@@ -78,7 +78,7 @@
                             @endif
                         @else
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('cart.show') }}">{{ Cart::count() }} <img src="/storage/shopping-cart.png" alt="cart" height="18" width="18"></a>
+                                <a class="nav-link" href="{{ route('cart.show') }}">{{ Cart::count() }} <img src="/storage/icons/shopping-cart.png" alt="cart" height="18" width="18"></a>
                             </li>
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -108,10 +108,15 @@
                 </div>
             </div>
         </nav>
-
-        <main class="py-4" style="background: url({{ auth()->user()->background_image }})">
-            @yield('content')
-        </main>
+        @if (isset(auth()->user()->background_image))
+            <main class="py-4" style="background: url({{ auth()->user()->background_image }})">
+                @yield('content')
+            </main>
+        @else
+            <main class="py-4">
+                @yield('content')
+            </main>
+        @endif
     </div>
     <footer class="container" style="text-align:center">
     <p>&copy; 2019 Ecezon.com, Inc. or its affiliates</p>

@@ -42,7 +42,15 @@ class Item extends Model
         'name', 'description', 'price', 'units', 'image', 'category'
     ];
 
-    public function musics() {
-        return $this->hasMany(Music::class);
+    public function music() {
+        return $this->hasOne(Music::class);
+    }
+
+    public function book() {
+        return $this->hasOne(Book::class);
+    }
+
+    public function clothing() {
+        return $this->hasOne(Clothing::class);
     }
 }

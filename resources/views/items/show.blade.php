@@ -16,6 +16,13 @@
                     Price: <strong>${{ $item->price }}</strong><br>
                     {{ $item->units }} units left<br>
                     {{ $item->description }}<br>
+                    @switch($item->category)
+                        @case('Book')
+                            Author: {{ $item->book->author }}<br>
+                            Release date: {{ $item->book->release }}
+                            @break
+                        @default
+                    @endswitch
                 </p>
                 <p>
                     <form method="POST" action="{{ route('cart.add') }}">

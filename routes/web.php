@@ -19,9 +19,13 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 /* These routes will redirect if and only if the user is logged in */
 Route::group(['middleware' => ['auth']], function () {
+    Route::get('sell', 'PageController@sell')->name('sell');
     Route::resource('users', 'UserController');
     Route::resource('items', 'ItemController');
     Route::post('/items/search', 'ItemController@search')->name('items.search');
+    Route::get('/items/book/create', 'BookController@create')->name('items.book.create');
+    Route::post('/items/book/store', 'BookController@store')->name('items.book.store');
+    Route::patch('/items/{item}/book', 'BookController@update')->name('items.book.update');
     Route::get('/cart/show', 'CartController@show')->name('cart.show');
     Route::post('/cart/delete', 'CartController@delete')->name('cart.delete');
     Route::post('/cart/add', 'CartController@add')->name('cart.add');

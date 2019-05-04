@@ -6,14 +6,22 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Edit an item</div>
+                <div class="card-header">Edit a book</div>
                 <div class="card-body">
-                    <form  method="POST" action="/items/{{ $item->id }}" enctype="multipart/form-data">
+                    <form  method="POST" action="/items/{{ $item->id }}/book" enctype="multipart/form-data">
                         @method('PATCH')
                         @csrf
                         <div class="form-group">
                             <label for="name">Name</label>
                             <input type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" placeholder="Name" value="{{ $item->name }}">
+                        </div>
+                        <div class="form-group">
+                            <label for="author">Author</label>
+                            <input type="text" class="form-control{{ $errors->has('author') ? ' is-invalid' : '' }}" name="author" placeholder="Author" value="{{ $item->book->author }}">
+                        </div>
+                        <div class="form-group">
+                            <label for="release">Release</label>
+                            <input type="number" class="form-control{{ $errors->has('release') ? ' is-invalid' : '' }}" name="release" placeholder="Release" value="{{ $item->book->release }}" max="2019">
                         </div>
                         <div class="form-group">
                             <label for="description">Description</label>

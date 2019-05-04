@@ -18,7 +18,6 @@ class CreateClothingsTable extends Migration
             $table->timestamps();
             $table->unsignedBigInteger('item_id');
             $table->string('size');
-            $table->foreign('item_id')->references('id')->on('items')->onDelete('cascade');
         });
     }
 

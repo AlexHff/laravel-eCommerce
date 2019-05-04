@@ -6,13 +6,21 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Create an item</div>
+                <div class="card-header">Create a book</div>
                 <div class="card-body">
-                    <form  method="POST" action="{{ route('items.store') }}" enctype="multipart/form-data">
+                    <form  method="POST" action="{{ route('items.book.store') }}" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group">
                             <label for="name">Name</label>
                             <input type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" placeholder="Name" value="{{ old('name') }}">
+                        </div>
+                        <div class="form-group">
+                            <label for="author">Author</label>
+                            <input type="text" class="form-control{{ $errors->has('author') ? ' is-invalid' : '' }}" name="author" placeholder="Author" value="{{ old('author') }}">
+                        </div>
+                        <div class="form-group">
+                            <label for="release">Release</label>
+                            <input type="number" class="form-control{{ $errors->has('release') ? ' is-invalid' : '' }}" name="release" placeholder="Release date" max="2019" value="{{ old('release') }}">
                         </div>
                         <div class="form-group">
                             <label for="description">Description</label>

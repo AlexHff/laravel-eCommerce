@@ -18,4 +18,8 @@ class PageController extends Controller
     public function deals() {
         return view("deals");
     }
+
+    public function sell() {
+        return view("sell");
+    }
 }

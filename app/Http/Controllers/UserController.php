@@ -65,7 +65,7 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'name'=>'required|max:120',
+            'name'=>'required|max:120|unique:users',
             'email'=>'required|email|unique:users',
             'password'=>'required|min:8|confirmed',
         ]);
@@ -122,7 +122,7 @@ class UserController extends Controller
     {
         if ($user->id == auth()->user()->id || auth()->user()->hasRole('admin')) {
             $this->validate($request, [
-                'name'=>'required|max:120',
+                'name'=>'required|max:120|unique:users',
                 'email'=>'required|email|unique:users,email,'.$user->id,
                 'password'=>'required|min:6|confirmed',
                 'firstname' =>'nullable',
