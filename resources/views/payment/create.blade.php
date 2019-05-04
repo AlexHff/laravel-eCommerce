@@ -12,13 +12,13 @@
                     <form  method="POST" action="{{ route('payment.store') }}">
                         @csrf
                         <div class="form-group">
-                            <label for="name">Card number</label>
+                            <label for="name">Card number</label> <span style="color: red !important; display: inline; float: none;">*</span>
                             <input type="text" class="form-control{{ $errors->has('card_number') ? ' is-invalid' : '' }}" name="card_number" placeholder="Valid card number" value="{{ old('card_number') }}">
                         </div>
                         <div class="row">
                             <div class="col-sm">
                                 <div class="form-group" id="expiration-date">
-                                    <label>Expiration Date</label><br>
+                                    <label>Expiration Date</label> <span style="color: red !important; display: inline; float: none;">*</span>
                                     <select class="form-control{{ $errors->has('expiration_month') ? ' is-invalid' : '' }}" name="expiration_month" value="{{ old('expiration_month') }}">
                                         <option value="01">January</option>
                                         <option value="02">February</option>
@@ -45,7 +45,7 @@
                             </div>
                             <div class="col-sm">
                                 <div class="form-group">
-                                    <label>CVC</label>
+                                    <label>CVC</label> <span style="color: red !important; display: inline; float: none;">*</span>
                                     <input type="number" class="form-control{{ $errors->has('cvc') ? ' is-invalid' : '' }}" name="cvc" placeholder="123" value="{{ old('cvc') }}">
                                 </div>
                             </div>

@@ -54,11 +54,7 @@ class ItemController extends Controller
             'description' => 'required|max:191',
             'price' => 'required|regex:/^\d+(\.\d{1,2})?$/',
             'units' => 'required|numeric|digits_between:0,1000000',
-            'image' => 'required|image|max:10000',
-            'category' => [
-                'required',
-                Rule::in(['Book', 'Music', 'Clothing', 'Sports & Outdoors']),
-            ]
+            'image' => 'required|image|max:10000'
         ]);
 
         $request->image->store('public');
@@ -101,6 +97,9 @@ class ItemController extends Controller
                 break;
             case 'Music':
                 return view('items.music.edit', compact('item'));
+                break;
+            case 'Clothing':
+                return view('items.clothing.edit', compact('item'));
                 break;
             default:
                 return view('items.edit', compact('item'));

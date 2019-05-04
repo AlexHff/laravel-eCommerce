@@ -14,7 +14,11 @@
                 <p>
                     <img src="{{ $item->image }}" alt="[item-image]" style="max-width:600px;"><br>
                     Price: <strong>${{ $item->price }}</strong><br>
-                    {{ $item->units }} units left<br>
+                    @if ($item->units == 0)
+                        <span style="color: red !important; display: inline; float: none;">Out of stock!</span><br>
+                    @else
+                        {{ $item->units }} units left<br>
+                    @endif
                     {{ $item->description }}<br>
                     @switch($item->category)
                         @case('Book')
