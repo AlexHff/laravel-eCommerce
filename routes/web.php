@@ -26,6 +26,12 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/items/book/create', 'BookController@create')->name('items.book.create');
     Route::post('/items/book/store', 'BookController@store')->name('items.book.store');
     Route::patch('/items/{item}/book', 'BookController@update')->name('items.book.update');
+    Route::get('/items/music/create', 'MusicController@create')->name('items.music.create');
+    Route::post('/items/music/store', 'MusicController@store')->name('items.music.store');
+    Route::patch('/items/{item}/music', 'MusicController@update')->name('items.music.update');
+    Route::get('/items/clothing/create', 'ClothingController@create')->name('items.clothing.create');
+    Route::post('/items/clothing/store', 'ClothingController@store')->name('items.clothing.store');
+    Route::patch('/items/{item}/clothing', 'ClothingController@update')->name('items.clothing.update');
     Route::get('/cart/show', 'CartController@show')->name('cart.show');
     Route::post('/cart/delete', 'CartController@delete')->name('cart.delete');
     Route::post('/cart/add', 'CartController@add')->name('cart.add');

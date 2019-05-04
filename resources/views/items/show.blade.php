@@ -21,6 +21,13 @@
                             Author: {{ $item->book->author }}<br>
                             Release date: {{ $item->book->release }}
                             @break
+                        @case('Music')
+                            Author: {{ $item->music->author }}<br>
+                            Album: {{ $item->music->album }}
+                            @break
+                        @case('Clothing')
+                            Size: {{ $item->clothing->size }}
+                            @break
                         @default
                     @endswitch
                 </p>

@@ -8,6 +8,7 @@
 namespace App\Http\Controllers;
 
 use Cart;
+use Hash;
 use Auth;
 use Illuminate\Http\Request;
 use Cartalyst\Stripe\Stripe;
@@ -98,10 +99,7 @@ class PaymentController extends Controller
             'password'=>'required',
         ]);
 
-        if (!Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
-            return back()->withError('Incorrect email or password.')->withInput();
-        }
-        else {
+        if(($request->email == auth()->user()->email) && Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
             env('STRIPE_API_KEY');
             $stripe = Stripe::make();
 
@@ -131,6 +129,9 @@ class PaymentController extends Controller
                     return back()->withError($e->getMessage())->withInput();
                 return redirect()->route('payment.pay');
             }
+        }
+        else {
+            return back()->withError('Incorrect email or password.')->withInput();
         }
     }
 
