@@ -55,7 +55,8 @@ class BookController extends Controller
             'price' => $request->price,
             'units' => $request->units,
             'image' => $url,
-            'category' => 'Book'
+            'category' => 'Book',
+            'seller_id' => auth()->user()->id
         ]);
 
         Book::create([

@@ -55,7 +55,8 @@ class MusicController extends Controller
             'price' => $request->price,
             'units' => $request->units,
             'image' => $url,
-            'category' => 'Music'
+            'category' => 'Music',
+            'seller_id' => auth()->user()->id
         ]);
 
         Music::create([

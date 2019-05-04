@@ -16,6 +16,9 @@
                     @endif
 
                     <p>Welcome, {{ auth()->user()->name }}!</p>
+                    @if (auth()->user()->hasRole(['admin']))
+                        <p><a href="users/create">Create a new user</a></p>
+                    @endif
                     <a href="{{ route('cart.show') }}"  style="color:inherit; text-decoration: none">
                         <button type="button" class="btn btn-lg btn-block btn-outline-primary">My Cart</button>
                     </a><br>

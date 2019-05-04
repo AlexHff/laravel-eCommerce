@@ -54,7 +54,8 @@ class ClothingController extends Controller
             'price' => $request->price,
             'units' => $request->units,
             'image' => $url,
-            'category' => 'Clothing'
+            'category' => 'Clothing',
+            'seller_id' => auth()->user()->id
         ]);
 
         Clothing::create([

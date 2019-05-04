@@ -12,7 +12,7 @@ class Clothing extends Model
      * @var array
      */
     protected $fillable = [
-        'item_id', 'size'
+        'item_id', 'size', 'seller_id'
     ];
 
     /**

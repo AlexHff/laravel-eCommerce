@@ -66,7 +66,8 @@ class ItemController extends Controller
             'price' => $request->price,
             'units' => $request->units,
             'image' => $url,
-            'category' => 'Sports & Outdoors'
+            'category' => 'Sports & Outdoors',
+            'seller_id' => auth()->user()->id
         ]);
 
         return view('items.show', compact('item'));

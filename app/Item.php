@@ -39,7 +39,7 @@ class Item extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'description', 'price', 'units', 'image', 'category'
+        'name', 'description', 'price', 'units', 'image', 'category', 'seller_id'
     ];
 
     public function music() {

@@ -47,7 +47,7 @@
                         </div>
                     </form>
                 </p>
-                @if (auth()->user()->hasAnyRole(['seller', 'admin']))
+                @if ((auth()->user()->hasRole(['seller']) && auth()->user()->id == $item->seller_id) || auth()->user()->hasRole(['admin']))
                 <p>
                 <a href="{{ url('items/'.$item->id.'/edit') }}">
                     <button type="button" class="btn btn-primary">Edit</button>

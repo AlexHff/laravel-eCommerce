@@ -22,6 +22,7 @@ class CreateItemsTable extends Migration
             $table->integer('units');
             $table->string('image');
             $table->string('category');
+            $table->bigInteger('seller_id');
         });
     }
 
