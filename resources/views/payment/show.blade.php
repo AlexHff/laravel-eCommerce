@@ -6,7 +6,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Payment information</div>
+                <div class="card-header">Payment information<img src="http://i76.imgup.net/accepted_c22e0.png" style="margin-left: 20px"></div>
 
                 <div class="card-body">
                     @php

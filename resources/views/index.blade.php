@@ -8,22 +8,22 @@
         <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active">
+                    <img class="d-block w-100" src="/storage/images/books.jpg" alt="books" style="max-height: 675px">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h2><strong>Take a look at our book collection!</strong></h2>
+                    </div>
+                </div>
+                <div class="carousel-item">
                     <img class="d-block w-100" src="/storage/images/clothing.jpg" alt="clothing" style="max-height: 675px">
                     <div class="carousel-caption d-none d-md-block" style="color: black">
                         <h2><strong>Look out for your next summer look!</strong></h2>
                     </div>
                 </div>
                 <div class="carousel-item">
-                <img class="d-block w-100" src="/storage/images/music.jpg" alt="music" style="max-height: 675px">
-                <div class="carousel-caption d-none d-md-block" style="color: black">
-                    <h2><strong>Get your favorite songs now!</strong></h2>
-                </div>
-                </div>
-                <div class="carousel-item">
-                <img class="d-block w-100" src="/storage/images/books.jpg" alt="books" style="max-height: 675px">
-                <div class="carousel-caption d-none d-md-block">
-                    <h2><strong>Take a look at our book collection!</strong></h2>
-                </div>
+                    <img class="d-block w-100" src="/storage/images/music.jpg" alt="music" style="max-height: 675px">
+                    <div class="carousel-caption d-none d-md-block" style="color: black">
+                        <h2><strong>Get your favorite songs now!</strong></h2>
+                    </div>
                 </div>
             </div>
         </div>
