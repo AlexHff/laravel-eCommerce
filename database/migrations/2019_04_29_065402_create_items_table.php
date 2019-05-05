@@ -23,6 +23,7 @@ class CreateItemsTable extends Migration
             $table->string('image');
             $table->string('category');
             $table->bigInteger('seller_id');
+            $table->string('video')->nullable();
         });
     }
 

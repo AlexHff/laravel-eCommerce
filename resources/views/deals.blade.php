@@ -4,32 +4,43 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center" style="text-align:center; margin: 20px 0 20px 0">
-        <div class="col-md-4">
-            <a href="#" style="color: inherit">
-            <img src="https://images-na.ssl-images-amazon.com/images/G/01/gno/SiteDirectory/SD_books_1x._CB274380261_.png" alt="clothing" style="margin-bottom:1em">
-            <h3>Books</h3>
-            </a>
-        </div>
-        <div class="col-md-4">
-            <a href="#" style="color: inherit">
-            <img src="https://images-na.ssl-images-amazon.com/images/G/01/gno/SiteDirectory/SD_music_1x._CB274422803_.png" alt="music" style="margin-bottom:1em">
-            <h3>Music</h3>
-            </a>
-        </div>
-    </div>
-    <div class="row justify-content-center" style="text-align:center; margin: 20px 0 0 0">
-        <div class="col-md-4">
-            <a href="#" style="color: inherit">
-            <img src="https://images-na.ssl-images-amazon.com/images/G/01/gno/SiteDirectory/SD_exports_MensFashion1x._CB470927249_.png" alt="music" style="margin-bottom:1em">
-            <h3>Clothing</h3>
-            </a>
-        </div>
-        <div class="col-md-4">
-            <a href="#" style="color: inherit">
-            <img src="https://images-na.ssl-images-amazon.com/images/G/01/gno/SiteDirectory/SD_exports_sportsoutdoors1x._CB470927250_.png" alt="music" style="margin-bottom:1em">
-            <h3>Sports & Outdoors</h3>
-            </a>
-        </div>
+        @php
+        $items = App\Item::inRandomOrder()->paginate(3);
+        @endphp
+        @foreach ($items as $item)
+            <div class="col-sm" style="margin-bottom: 2em">
+                <p>
+                    <a href="{{ url('items/'.$item->id) }}">
+                        <img src="{{ $item->image }}" alt="[item-image]" style="max-width:300px;"><br>
+                    </a>
+                    <h4><a href="{{ url('items/'.$item->id) }}" style="color: inherit">{{ $item->name }}</a></h4>
+                    {{ $item->category }}
+                    Price: <strong>${{ $item->price }}</strong><br>
+                    @if ($item->units == 0)
+                        <span style="color: red !important; display: inline; float: none;">Out of stock!</span><br>
+                    @else
+                        @if ($item->category != 'Music')
+                        {{ $item->units }} units left<br>
+                        @endif
+                    @endif
+                    Description: {{ $item->description }}<br>
+                    @switch($item->category)
+                        @case('Book')
+                            Author: {{ $item->book->author }}<br>
+                            Release date: {{ $item->book->release }}
+                            @break
+                        @case('Music')
+                            Author: {{ $item->music->author }}<br>
+                            Album: {{ $item->music->album }}
+                            @break
+                        @case('Clothing')
+                            Size: {{ $item->clothing->size }}
+                            @break
+                        @default
+                    @endswitch
+                </p>
+            </div>
+        @endforeach
     </div>
 </div>
 @endsection

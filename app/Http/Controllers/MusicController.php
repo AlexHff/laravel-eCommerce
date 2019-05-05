@@ -43,6 +43,7 @@ class MusicController extends Controller
             'description' => 'required|max:191',
             'price' => 'required|regex:/^\d+(\.\d{1,2})?$/',
             'image' => 'required|image|max:10000',
+            'video' =>'nullable'
         ]);
 
         $request->image->store('public');
@@ -55,7 +56,8 @@ class MusicController extends Controller
             'units' => 1000000,
             'image' => $url,
             'category' => 'Music',
-            'seller_id' => auth()->user()->id
+            'seller_id' => auth()->user()->id,
+            'video' => $request->video
         ]);
 
         Music::create([
@@ -90,13 +92,14 @@ class MusicController extends Controller
         $validatedData = $request->validate([
             'name' => 'required|max:191',
             'author' => 'required|max:191',
-            'album' => 'required|numeric|max:2019',
+            'album' => 'required|max:191',
             'description' => 'required|max:191',
             'price' => 'required|regex:/^\d+(\.\d{1,2})?$/',
             'image' => 'nullable|image|max:10000',
+            'video' => 'nullable'
         ]);
 
-        $item->update(request(['name', 'descriptions', 'price']));
+        $item->update(request(['name', 'descriptions', 'price', 'video']));
         $item->music->author = $request->author;
         $item->music->album = $request->album;
 

@@ -30,6 +30,10 @@
                             <label for="image">Image</label> <span style="color: red !important; display: inline; float: none;">*</span>
                             <input type="file" name="image">
                         </div>
+                        <div class="form-group">
+                            <label for="video">Link to video</label>
+                            <input type="text" class="form-control{{ $errors->has('video') ? ' is-invalid' : '' }}" name="video" placeholder="Link to video" value="{{ old('video') }}">
+                        </div>
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </form>
                     @if ($errors->any())

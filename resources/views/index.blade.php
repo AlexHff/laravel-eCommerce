@@ -6,11 +6,6 @@
 
     <div class="container" style="margin-bottom: 2em">
         <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
-            <ol class="carousel-indicators">
-                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-            </ol>
             <div class="carousel-inner">
                 <div class="carousel-item active">
                     <img class="d-block w-100" src="/storage/images/clothing.jpg" alt="clothing" style="max-height: 675px">
@@ -19,21 +14,13 @@
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <img class="d-block w-100" src="/storage/images/music.jpg" alt="music" style="max-height: 675px">
+                <img class="d-block w-100" src="/storage/images/music.jpg" alt="music" style="max-height: 675px">
                 <div class="carousel-caption d-none d-md-block" style="color: black">
                     <h2><strong>Get your favorite songs now!</strong></h2>
                 </div>
-                <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Previous</span>
-                </a>
-                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Next</span>
-                </a>
                 </div>
                 <div class="carousel-item">
-                    <img class="d-block w-100" src="/storage/images/books.jpg" alt="books" style="max-height: 675px">
+                <img class="d-block w-100" src="/storage/images/books.jpg" alt="books" style="max-height: 675px">
                 <div class="carousel-caption d-none d-md-block">
                     <h2><strong>Take a look at our book collection!</strong></h2>
                 </div>

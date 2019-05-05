@@ -12,7 +12,13 @@
                 <h3>{{ $item->name }}</h3>
                 {{ $item->category }}
                 <p>
-                    <img src="{{ $item->image }}" alt="[item-image]" style="max-width:600px;"><br>
+                    <img src="{{ $item->image }}" class="img-fluid" alt="[item-image]"><br>
+                    @if (isset($item->video))
+                        <div class="embed-responsive embed-responsive-16by9">
+                            <iframe class="embed-responsive-item" src="{{ $item->video }}" allowfullscreen></iframe>
+                        </div>
+                        <br>
+                    @endif
                     Price: <strong>${{ $item->price }}</strong><br>
                     @if ($item->units == 0)
                         <span style="color: red !important; display: inline; float: none;">Out of stock!</span><br>

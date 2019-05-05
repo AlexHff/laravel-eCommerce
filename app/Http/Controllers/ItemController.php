@@ -54,7 +54,8 @@ class ItemController extends Controller
             'description' => 'required|max:191',
             'price' => 'required|regex:/^\d+(\.\d{1,2})?$/',
             'units' => 'required|numeric|digits_between:0,1000000',
-            'image' => 'required|image|max:10000'
+            'image' => 'required|image|max:10000',
+            'video' => 'nullable'
         ]);
 
         $request->image->store('public');
@@ -67,7 +68,8 @@ class ItemController extends Controller
             'units' => $request->units,
             'image' => $url,
             'category' => 'Sports & Outdoors',
-            'seller_id' => auth()->user()->id
+            'seller_id' => auth()->user()->id,
+            'video' => $request->video
         ]);
 
         return view('items.show', compact('item'));
@@ -124,8 +126,9 @@ class ItemController extends Controller
             'price' => 'required|regex:/^\d+(\.\d{1,2})?$/',
             'units' => 'required|numeric|digits_between:0,1000000',
             'image' => 'nullable|image|max:10000',
+            'video' =>'nullable'
         ]);
-        $item->update(request(['name', 'descriptions', 'price', 'units']));
+        $item->update(request(['name', 'descriptions', 'price', 'units', 'video']));
 
         if (!is_null($request->image)) {
             $request->image->store('public');

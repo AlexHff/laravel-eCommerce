@@ -42,7 +42,8 @@ class ClothingController extends Controller
             'price' => 'required|regex:/^\d+(\.\d{1,2})?$/',
             'units' => 'required|numeric|digits_between:0,1000000',
             'image' => 'required|image|max:10000',
-            'size' => 'required'
+            'size' => 'required',
+            'video' => 'nullable'
         ]);
 
         $request->image->store('public');
@@ -55,7 +56,8 @@ class ClothingController extends Controller
             'units' => $request->units,
             'image' => $url,
             'category' => 'Clothing',
-            'seller_id' => auth()->user()->id
+            'seller_id' => auth()->user()->id,
+            'video' => $request->video
         ]);
 
         Clothing::create([
@@ -92,10 +94,11 @@ class ClothingController extends Controller
             'price' => 'required|regex:/^\d+(\.\d{1,2})?$/',
             'units' => 'required|numeric|digits_between:0,1000000',
             'image' => 'nullable|image|max:10000',
-            'size' => 'required'
+            'size' => 'required',
+            'video' => 'nullable'
         ]);
 
-        $item->update(request(['name', 'descriptions', 'price', 'units']));
+        $item->update(request(['name', 'descriptions', 'price', 'units', 'video']));
         $item->clothing->size = $request->size;
 
         if (!is_null($request->image)) {
