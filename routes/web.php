@@ -11,7 +11,7 @@
 |
 */
 
-Auth::routes();
+Auth::routes(['verify' => true]);
 
 Route::get('/categories', 'PageController@categories')->name('categories');
 Route::get('/deals', 'PageController@deals')->name('deals');

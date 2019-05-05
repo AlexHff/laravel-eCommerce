@@ -39,6 +39,7 @@ php artisan migrate --seed
 Go to [http://localhost:8000](http://localhost:8000) (or any indicated address) and voilà!
 
 ## References
+- [Bootstrap](https://getbootstrap.com/)
 - [Laravel Documentation](https://laravel.com/docs/5.8)
 - [Laracasts](https://laracasts.com/series/laravel-from-scratch-2018/)
 - [Stackoverflow](https://stackoverflow.com/)
@@ -50,3 +51,4 @@ Go to [http://localhost:8000](http://localhost:8000) (or any indicated address) 
 - [Algolia Documentation](https://www.algolia.com/doc)
 - [Stripe Documentation](https://stripe.com/docs)
 - [Stripe Laravel](https://github.com/cartalyst/stripe-laravel)
+- [Mailgun Documentation](https://documentation.mailgun.com/en/latest/)

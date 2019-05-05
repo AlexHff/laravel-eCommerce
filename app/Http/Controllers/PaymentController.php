@@ -10,8 +10,10 @@ namespace App\Http\Controllers;
 use Cart;
 use Hash;
 use Auth;
+use App\Mail\OrderShipped;
 use Illuminate\Http\Request;
 use Cartalyst\Stripe\Stripe;
+use Illuminate\Support\Facades\Mail;
 
 class PaymentController extends Controller
 {
@@ -99,19 +101,23 @@ class PaymentController extends Controller
             'password'=>'required',
         ]);
 
-        if(($request->email == auth()->user()->email) && Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
+        $user = auth()->user();
+
+        if(($request->email == $user->email) && Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
             env('STRIPE_API_KEY');
             $stripe = Stripe::make();
 
             try {
                 $charge = $stripe->charges()->create([
-                    'customer' => auth()->user()->stripe_id,
+                    'customer' => $user->stripe_id,
                     'currency' => 'USD',
                     'amount' => Cart::total(),
+                    'receipt_email' => $user->email,
                 ]);
 
                 if($charge['status'] == 'succeeded') {
                     Cart::destroy();
+                    $mail = Mail::to($user)->send(new OrderShipped($charge['receipt_url']));
                     return redirect()->route('payment.success');
                 }
                 else {

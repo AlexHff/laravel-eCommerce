@@ -122,7 +122,7 @@ class UserController extends Controller
     {
         if ($user->id == auth()->user()->id || auth()->user()->hasRole('admin')) {
             $this->validate($request, [
-                'name'=>'required|max:120|unique:users',
+                'name'=>'required|max:120',
                 'email'=>'required|email|unique:users,email,'.$user->id,
                 'password'=>'required|min:6|confirmed',
                 'firstname' =>'nullable',
