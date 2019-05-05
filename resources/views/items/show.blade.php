@@ -17,9 +17,11 @@
                     @if ($item->units == 0)
                         <span style="color: red !important; display: inline; float: none;">Out of stock!</span><br>
                     @else
+                        @if ($item->category != 'Music')
                         {{ $item->units }} units left<br>
+                        @endif
                     @endif
-                    {{ $item->description }}<br>
+                    Description: {{ $item->description }}<br>
                     @switch($item->category)
                         @case('Book')
                             Author: {{ $item->book->author }}<br>

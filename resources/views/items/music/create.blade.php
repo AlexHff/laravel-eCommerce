@@ -31,10 +31,6 @@
                             <input type="number" step="0.01" class="form-control{{ $errors->has('price') ? ' is-invalid' : '' }}" name="price" placeholder="Price"min="0" value="{{ old('price') }}">
                         </div>
                         <div class="form-group">
-                            <label for="units">Units</label> <span style="color: red !important; display: inline; float: none;">*</span>
-                            <input type="number" class="form-control{{ $errors->has('units') ? ' is-invalid' : '' }}" name="units" placeholder="Units" min="0" value="{{ old('units') }}">
-                        </div>
-                        <div class="form-group">
                             <label for="image">Image</label> <span style="color: red !important; display: inline; float: none;">*</span>
                             <input type="file" name="image">
                         </div>

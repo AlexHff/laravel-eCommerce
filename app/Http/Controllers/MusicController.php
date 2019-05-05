@@ -42,7 +42,6 @@ class MusicController extends Controller
             'album' => 'required|max:191',
             'description' => 'required|max:191',
             'price' => 'required|regex:/^\d+(\.\d{1,2})?$/',
-            'units' => 'required|numeric|digits_between:0,1000000',
             'image' => 'required|image|max:10000',
         ]);
 
@@ -53,7 +52,7 @@ class MusicController extends Controller
             'name' => $request->name,
             'description' => $request->description,
             'price' => $request->price,
-            'units' => $request->units,
+            'units' => 1000000,
             'image' => $url,
             'category' => 'Music',
             'seller_id' => auth()->user()->id
@@ -94,18 +93,16 @@ class MusicController extends Controller
             'album' => 'required|numeric|max:2019',
             'description' => 'required|max:191',
             'price' => 'required|regex:/^\d+(\.\d{1,2})?$/',
-            'units' => 'required|numeric|digits_between:0,1000000',
             'image' => 'nullable|image|max:10000',
         ]);
 
-        $item->update(request(['name', 'descriptions', 'price', 'units']));
+        $item->update(request(['name', 'descriptions', 'price']));
         $item->music->author = $request->author;
         $item->music->album = $request->album;
 
         if (!is_null($request->image)) {
             $request->image->store('public');
             $url = Storage::url($request->image->hashName());
-            $item->update(request(['name', 'descriptions', 'price', 'units', 'category']));
             $item->image = $url;
         }
         $item->save();

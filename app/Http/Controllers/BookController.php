@@ -105,7 +105,6 @@ class BookController extends Controller
         if (!is_null($request->image)) {
             $request->image->store('public');
             $url = Storage::url($request->image->hashName());
-            $item->update(request(['name', 'descriptions', 'price', 'units', 'category']));
             $item->image = $url;
         }
         $item->save();
