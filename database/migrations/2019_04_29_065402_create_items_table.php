@@ -21,6 +21,7 @@ class CreateItemsTable extends Migration
             $table->double('price');
             $table->integer('units');
             $table->string('image');
+            $table->string('image2')->nullable();
             $table->string('category');
             $table->bigInteger('seller_id');
             $table->string('video')->nullable();

@@ -44,6 +44,7 @@ class BookController extends Controller
             'price' => 'required|regex:/^\d+(\.\d{1,2})?$/',
             'units' => 'required|numeric|digits_between:0,1000000',
             'image' => 'required|image|max:10000',
+            'image2' => 'nullable|image|max:10000',
         ]);
 
         $request->image->store('public');
@@ -58,6 +59,13 @@ class BookController extends Controller
             'category' => 'Book',
             'seller_id' => auth()->user()->id
         ]);
+
+        if (isset($request->image2)) {
+            $request->image2->store('public');
+            $url2 = Storage::url($request->image2->hashName());
+            $item->image2 = $url2;
+            $item->save();
+        }
 
         Book::create([
             'item_id' => $item->id,
@@ -96,6 +104,7 @@ class BookController extends Controller
             'price' => 'required|regex:/^\d+(\.\d{1,2})?$/',
             'units' => 'required|numeric|digits_between:0,1000000',
             'image' => 'nullable|image|max:10000',
+            'image2' => 'nullable|image|max:10000',
         ]);
 
         $item->update(request(['name', 'descriptions', 'price', 'units']));
@@ -106,6 +115,11 @@ class BookController extends Controller
             $request->image->store('public');
             $url = Storage::url($request->image->hashName());
             $item->image = $url;
+        }
+        if (!is_null($request->image2)) {
+            $request->image2->store('public');
+            $url2 = Storage::url($request->image2->hashName());
+            $item->image2 = $url2;
         }
         $item->save();
 

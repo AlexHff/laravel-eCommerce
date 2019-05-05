@@ -36,6 +36,10 @@
                             <input type="file" name="image" value="{{ $item->image }}">
                         </div>
                         <div class="form-group">
+                            <label for="image2">Image 2</label>
+                            <input type="file" name="image2" value="{{ $item->image2 }}">
+                        </div>
+                        <div class="form-group">
                             <label for="video">Link to video</label>
                             <input type="text" class="form-control{{ $errors->has('video') ? ' is-invalid' : '' }}" name="video" placeholder="Video" value="{{ $item->video }}">
                         </div>

@@ -17,17 +17,18 @@
 
                     <p>Welcome, {{ auth()->user()->name }}!</p>
                     @if (auth()->user()->hasRole(['admin']))
-                        <p><a href="users/create">Create a new user</a></p>
+                        <p><a href="users/">All users</a><br>
+                        <a href="users/create">Create a new user</a></p>
                     @endif
-                    <a href="{{ route('cart.show') }}"  style="color:inherit; text-decoration: none">
+                    <p><a href="{{ route('cart.show') }}"  style="color:inherit; text-decoration: none">
                         <button type="button" class="btn btn-lg btn-block btn-outline-primary">My Cart</button>
-                    </a><br>
-                    <a href="/users/{{ auth()->user()->id }}"  style="color:inherit; text-decoration: none">
+                    </a></p>
+                    <p><a href="/users/{{ auth()->user()->id }}"  style="color:inherit; text-decoration: none">
                         <button type="button" class="btn btn-lg btn-block btn-outline-primary">My Profile</button>
-                    </a><br>
-                    <a href="/payment/show"  style="color:inherit; text-decoration: none">
+                    </a></p>
+                    <p><a href="/payment/show"  style="color:inherit; text-decoration: none">
                         <button type="button" class="btn btn-lg btn-block btn-outline-primary">My Payment information</button>
-                    </a>
+                    </a></p>
                 </div>
             </div>
         </div>

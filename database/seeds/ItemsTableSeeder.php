@@ -225,5 +225,55 @@ class ItemsTableSeeder extends Seeder
         'item_id' => $item->id,
         'size' => 'M',
         ]);
+
+        Item::create([
+        'name' => 'Smartbox Week-end gourmand en amoureux',
+        'description' => 'gift box',
+        'price' => 89.90,
+        'units' => 120,
+        'image' => 'https://images-na.ssl-images-amazon.com/images/I/41noJ8AV37L.jpg',
+        'category' => 'Sports & Outdoors',
+        'seller_id' => 2
+        ]);
+
+        Item::create([
+        'name' => 'AB Wheel Roller Pro de Fitness',
+        'description' => 'Metal grey',
+        'price' => 15.99,
+        'units' => 150,
+        'image' => 'https://images-na.ssl-images-amazon.com/images/I/61iT6bshPSL._SL1500_.jpg',
+        'category' => 'Sports & Outdoors',
+        'seller_id' => 2
+        ]);
+
+        Item::create([
+        'name' => 'Playground and inflatable paddling pool pirate ship',
+        'description' => 'longueur 191 cm x largeur 140 cm, hauteur 96 cm',
+        'price' => 11.51,
+        'units' => 50,
+        'image' => 'https://images-na.ssl-images-amazon.com/images/I/51wGRUhcQAL.jpg',
+        'category' => 'Sports & Outdoors',
+        'seller_id' => 2
+        ]);
+
+        Item::create([
+        'name' => 'Ultrasport F-Bike and F-Rider',
+        'description' => 'Black hometrainer',
+        'price' => 99.99,
+        'units' => 2498,
+        'image' => 'https://images-na.ssl-images-amazon.com/images/I/715Tt8JTyFL._SL1500_.jpg',
+        'category' => 'Sports & Outdoors',
+        'seller_id' => 2
+        ]);
+
+        Item::create([
+        'name' => 'Xiaomi FBC4004GL',
+        'description' => 'Black electric scooter',
+        'price' => 399.00,
+        'units' => 500,
+        'image' => 'https://images-na.ssl-images-amazon.com/images/I/71w8R1Va2XL._SL1500_.jpg',
+        'category' => 'Sports & Outdoors',
+        'seller_id' => 2
+        ]);
     }
 }

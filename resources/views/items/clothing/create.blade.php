@@ -40,6 +40,10 @@
                             <input type="file" name="image">
                         </div>
                         <div class="form-group">
+                            <label for="image2">Image 2</label>
+                            <input type="file" name="image2">
+                        </div>
+                        <div class="form-group">
                             <label for="video">Link to video</label>
                             <input type="text" class="form-control{{ $errors->has('video') ? ' is-invalid' : '' }}" name="video" placeholder="Link to video" value="{{ old('video') }}">
                         </div>

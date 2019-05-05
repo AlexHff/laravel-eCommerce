@@ -12,7 +12,7 @@ class Music extends Model
      * @var array
      */
     protected $fillable = [
-        'item_id', 'author', 'album', 'seller_id', 'video'
+        'item_id', 'author', 'album', 'seller_id', 'video', 'image2'
     ];
 
     /**

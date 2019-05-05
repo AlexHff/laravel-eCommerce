@@ -39,6 +39,10 @@
                             <label for="image">Image</label>
                             <input type="file" name="image" value="{{ $item->image }}">
                         </div>
+                        <div class="form-group">
+                            <label for="image2">Image 2</label>
+                            <input type="file" name="image2" value="{{ $item->image2 }}">
+                        </div>
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </form>
                     @if ($errors->any())

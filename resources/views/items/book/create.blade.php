@@ -38,6 +38,10 @@
                             <label for="image">Image</label> <span style="color: red !important; display: inline; float: none;">*</span>
                             <input type="file" name="image">
                         </div>
+                        <div class="form-group">
+                            <label for="image2">Image 2</label>
+                            <input type="file" name="image2">
+                        </div>
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </form>
                     @if ($errors->any())
