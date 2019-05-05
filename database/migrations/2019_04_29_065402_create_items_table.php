@@ -24,6 +24,7 @@ class CreateItemsTable extends Migration
             $table->string('category');
             $table->bigInteger('seller_id');
             $table->string('video')->nullable();
+            $table->integer('sales')->default(0);
         });
     }
 

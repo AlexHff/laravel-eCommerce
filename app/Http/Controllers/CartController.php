@@ -20,6 +20,7 @@ class CartController extends Controller
         Cart::setGlobalTax(0);
         $item = Item::findOrFail(Cart::get($request->rowId)->id);
         $item->units = $item->units + Cart::get($request->rowId)->qty;
+        $item->sales = $item->sales - Cart::get($request->rowId)->qty;
         $item->save();
         Cart::remove($request->rowId);
         return view('cart.show');
@@ -47,6 +48,7 @@ class CartController extends Controller
                     'image' => $item->image, ]
             ]);
             $item->units = $item->units - $request->units;
+            $item->sales = $item->sales + $request->units;
             $item->save();
             return view('cart.show');
         }

@@ -5,7 +5,7 @@
 <div class="container">
     <div class="row justify-content-center" style="text-align:center; margin: 20px 0 20px 0">
         @php
-        $items = App\Item::inRandomOrder()->paginate(3);
+        $items = App\Item::orderBy('sales', 'desc')->paginate(3);
         @endphp
         @foreach ($items as $item)
             <div class="col-sm" style="margin-bottom: 2em">
